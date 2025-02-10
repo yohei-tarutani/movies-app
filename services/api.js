@@ -4,7 +4,7 @@ const fetchFromAPI = async (endpoint) => {
   try {
     const response = await fetch(`${BASE_URL}${endpoint}?api_key=${API_KEY}`);
     const data = await response.json();
-    console.log(data.results);
+    // console.log(data.results);
     return data;
   } catch (error) {
     console.error("Failed to fetch movies:", error);

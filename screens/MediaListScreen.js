@@ -34,8 +34,6 @@ const MediaListScreen = ({
     if (fetchedItems.results) {
       setMediaItems(fetchedItems.results);
       console.log("Fetched Media Items:", fetchedItems.results);
-    } else {
-      console.log("No results found");
     }
   };
 
