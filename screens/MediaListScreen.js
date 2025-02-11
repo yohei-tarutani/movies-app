@@ -30,10 +30,16 @@ const MediaListScreen = ({
   }, [selectedItem]);
 
   const fetchAndSetMediaItems = async (category) => {
+    console.log("Fetching data for SelectedItem:", category);
     const fetchedItems = await fetchData(category);
-    if (fetchedItems.results) {
-      setMediaItems(fetchedItems.results || []);
-      console.log("Fetched Media Items:", fetchedItems.results);
+    if (fetchedItems) {
+      setMediaItems(fetchedItems.results);
+      console.log(
+        "Fetched Media Items for",
+        category,
+        ":",
+        fetchedItems.results
+      );
     }
   };
 
@@ -60,7 +66,9 @@ const MediaListScreen = ({
 
         <FlatList
           data={showNextPage ? mediaItems.slice(10) : mediaItems.slice(0, 10)}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) =>
+            item.id?.toString() || Math.random().toString()
+          }
           renderItem={({ item }) => (
             <View style={styles.mediaItem}>
               <Image

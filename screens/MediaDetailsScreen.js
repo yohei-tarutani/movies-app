@@ -9,12 +9,13 @@ import {
 } from "react-native";
 
 const MediaDetailsScreen = ({ fetchDetails, id, navigation, titleKey }) => {
-  const [media, setMedia] = useState(null);
+  const [media, setMedia] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getMediaDetails = async () => {
       const fetchedMedia = await fetchDetails(id);
+      console.log(fetchedMedia);
       if (fetchedMedia) {
         setMedia(fetchedMedia);
         navigation.setOptions({ title: fetchedMedia[titleKey] });
