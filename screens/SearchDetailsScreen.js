@@ -17,7 +17,12 @@ const SearchDetailsScreen = ({ route, navigation }) => {
   useEffect(() => {
     const getDetails = async () => {
       setLoading(true);
-      const data = await fetchSearchDetails(movieId, tvId);
+
+      const id = movieId || tvId;
+      const type = movieId ? "movie" : "tv";
+      if (!id) return;
+
+      const data = await fetchSearchDetails(type, id);
       if (data) {
         setDetails(data);
         navigation.setOptions({ title: data.title || data.name });

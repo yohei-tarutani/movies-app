@@ -78,7 +78,8 @@ const SearchResultsScreen = ({ navigation }) => {
                     });
                   } else {
                     navigation.navigate("SearchDetails", {
-                      movieId: item.id,
+                      selectedType,
+                      id: item.id,
                     });
                   }
                 }}

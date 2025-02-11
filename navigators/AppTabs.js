@@ -16,7 +16,7 @@ const AppTabs = () => {
       }}
     >
       <Tab.Screen name="Movies" component={MoviesScreen} />
-      <Tab.Screen name="SearchResults" component={SearchResultsScreen} />
+      <Tab.Screen name="Search Results" component={SearchResultsScreen} />
       <Tab.Screen name="TVShows" component={TVShowsScreen} />
     </Tab.Navigator>
   );

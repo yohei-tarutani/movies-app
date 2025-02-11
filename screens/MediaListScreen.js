@@ -32,7 +32,7 @@ const MediaListScreen = ({
   const fetchAndSetMediaItems = async (category) => {
     const fetchedItems = await fetchData(category);
     if (fetchedItems.results) {
-      setMediaItems(fetchedItems.results);
+      setMediaItems(fetchedItems.results || []);
       console.log("Fetched Media Items:", fetchedItems.results);
     }
   };
@@ -63,17 +63,15 @@ const MediaListScreen = ({
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
             <View style={styles.mediaItem}>
-              <View style={styles.poster}>
-                <Image
-                  source={{
-                    uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
-                  }}
-                  style={styles.posterImage}
-                />
-              </View>
+              <Image
+                source={{
+                  uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+                }}
+                style={styles.posterImage}
+              />
               <View style={styles.mediaInfo}>
                 <Text style={styles.titleText} numberOfLines={0}>
-                  {item.titleKey}
+                  {item[titleKey]}
                 </Text>
                 <Text>Popularity: {item.popularity}</Text>
                 <Text>Release Date: {item.release_date}</Text>
@@ -103,11 +101,11 @@ const MediaListScreen = ({
               </TouchableOpacity>
             )
           }
-          ListFooterComponentStyle={{
-            paddingVertical: 10,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+          // ListFooterComponentStyle={{
+          //   paddingVertical: 10,
+          //   justifyContent: "center",
+          //   alignItems: "center",
+          // }}
         />
 
         <Modal
@@ -174,10 +172,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: "#ddd",
   },
-  poster: {
-    marginHorizontal: 10,
-  },
   posterImage: {
+    marginHorizontal: 10,
     width: 100,
     height: 105,
   },
