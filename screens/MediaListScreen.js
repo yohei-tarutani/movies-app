@@ -102,11 +102,6 @@ const MediaListScreen = ({
               </TouchableOpacity>
             )
           }
-          // ListFooterComponentStyle={{
-          //   paddingVertical: 10,
-          //   justifyContent: "center",
-          //   alignItems: "center",
-          // }}
         />
 
         <Modal

@@ -15,7 +15,6 @@ const MediaDetailsScreen = ({ fetchDetails, id, navigation, titleKey }) => {
   useEffect(() => {
     const getMediaDetails = async () => {
       const fetchedMedia = await fetchDetails(id);
-      // console.log(fetchedMedia);
       if (fetchedMedia) {
         setMedia(fetchedMedia);
         navigation.setOptions({ title: fetchedMedia[titleKey] });

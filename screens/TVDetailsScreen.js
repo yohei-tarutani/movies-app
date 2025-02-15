@@ -3,7 +3,6 @@ import MediaDetailsScreen from "./MediaDetailsScreen";
 
 const TVDetailsScreen = ({ route, navigation }) => {
   const { tvId } = route.params;
-
   return (
     <MediaDetailsScreen
       fetchDetails={fetchTvDetails}
