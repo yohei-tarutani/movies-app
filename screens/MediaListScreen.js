@@ -30,16 +30,9 @@ const MediaListScreen = ({
   }, [selectedItem]);
 
   const fetchAndSetMediaItems = async (category) => {
-    console.log("Fetching data for SelectedItem:", category);
     const fetchedItems = await fetchData(category);
     if (fetchedItems) {
       setMediaItems(fetchedItems.results);
-      console.log(
-        "Fetched Media Items for",
-        category,
-        ":",
-        fetchedItems.results
-      );
     }
   };
 

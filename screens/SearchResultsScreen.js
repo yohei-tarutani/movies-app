@@ -48,7 +48,7 @@ const SearchResultsScreen = ({ navigation }) => {
     pageContent = (
       <FlatList
         data={showNextPage ? items.slice(10) : items.slice(0, 10)}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id.toString + Math.random()}
         renderItem={({ item }) => (
           <View style={styles.item}>
             <View style={styles.poster}>

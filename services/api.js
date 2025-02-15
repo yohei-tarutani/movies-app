@@ -1,17 +1,15 @@
-import { API_ACCESS_TOKEN, BASE_URL, API_KEY } from "../config/apiConfig";
+// import { API_ACCESS_TOKEN, BASE_URL, API_KEY } from "../config/apiConfig";
+const BASE_URL = "https://api.themoviedb.org/3/";
+const API_KEY = "395c41bbfc266119069c831f7604b2fd";
 
 const fetchFromAPI = async (endpoint) => {
   try {
-    const response = await fetch(
-      `${BASE_URL}${endpoint}?api_key=${API_KEY}&language=en-US&page=1`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${API_ACCESS_TOKEN}`,
-        },
-      }
-    );
+    const response = await fetch(`${BASE_URL}${endpoint}?api_key=${API_KEY}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    });
     if (!response.ok) {
       throw new Error(`Failed with status: ${response.status}`);
     }
@@ -36,6 +34,43 @@ export const fetchSearchResults = (selectedType, searchKeyword) =>
   );
 export const fetchSearchDetails = (selectedType, id) =>
   fetchFromAPI(`search/${selectedType}/${id}`);
+
+// const api = axios.create({
+//   baseURL: BASE_URL,
+//   headers: {
+//     accept: "application/json",
+//   },
+//   params: {
+//     api_key: API_KEY,
+//   },
+// });
+
+// const api = {
+//   get: async (endpoint) => {
+//     try {
+//       const response = await fetch(
+//         `${BASE_URL}${endpoint}?api_key=${API_KEY}`,
+//         {
+//           headers: {
+//             Accept: "application/json",
+//           },
+//         }
+//       );
+
+//       if (!response.ok) {
+//         throw new Error(`HTTP error! status: ${response.status}`);
+//       }
+
+//       const data = await response.json();
+//       return data;
+//     } catch (error) {
+//       console.error("Error fetching data:", error);
+//       throw error;
+//     }
+//   },
+// };
+
+// export default api;
 
 // export const fetchMovies = async (category) => {
 //   try {
