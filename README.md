@@ -1,4 +1,4 @@
-Movies App
+React Native Movies App
 
 How to open the app:
 1. Use this command on VS code. => $ npm start
